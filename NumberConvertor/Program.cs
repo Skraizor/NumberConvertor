@@ -12,20 +12,27 @@ namespace NumberConvertor
 		static void Main(string[] args) {
 			while (true) {
 				string number;
-				int numberBase;
-				int targetNumberBase;
 
 				Console.Write("Enter number: ");
 				number = Console.ReadLine().Trim();
+				if (string.IsNullOrWhiteSpace(number)) {
+					Console.WriteLine("Please insert number.");
+					continue;
+				}
 
 				Console.Write("Enter its base: ");
-				if(!int.TryParse(Console.ReadLine().Trim(), out numberBase) || numberBase < 2) {
+				if(!int.TryParse(Console.ReadLine().Trim(), out int numberBase) || numberBase < 2) {
 					Console.WriteLine("Base has to be whole number greater then 2");
 					continue;
 				}
 
+				if (!Convertor.IsNumberValid(number, numberBase)) {
+					Console.WriteLine("Number has to be from its base.");
+					continue;
+				}
+
 				Console.Write("Enter target base: ");
-				if (!int.TryParse(Console.ReadLine().Trim(), out targetNumberBase) || targetNumberBase < 2) {
+				if (!int.TryParse(Console.ReadLine().Trim(), out int targetNumberBase) || targetNumberBase < 2) {
 					Console.WriteLine("Base has to be whole number greater then 2");
 					continue;
 				}
