@@ -1,20 +1,14 @@
-﻿using NumberConvertor.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using NumberConvertor.Services;
 
 namespace NumberConvertor
 {
 	class Program
 	{
-		static void Main(string[] args) {
+		private static void Main(string[] args) {
 			while (true) {
-				string number;
-
 				Console.Write("Enter number: ");
-				number = Console.ReadLine().Trim();
+				var number = Console.ReadLine().Trim();
 				if (string.IsNullOrWhiteSpace(number)) {
 					Console.WriteLine("Please insert number.");
 					continue;
@@ -26,7 +20,7 @@ namespace NumberConvertor
 					continue;
 				}
 
-				if (!Convertor.IsNumberValid(number, numberBase)) {
+				if (!Converter.IsNumberValid(number, numberBase)) {
 					Console.WriteLine("Number has to be from its base.");
 					continue;
 				}
@@ -37,8 +31,9 @@ namespace NumberConvertor
 					continue;
 				}
 
-				string resultNumber = Convertor.Convert(number, numberBase, targetNumberBase);
-				Console.WriteLine(string.Format("Converted number {0} from base {1} to base {2} is {3}", number, numberBase, targetNumberBase, resultNumber));
+				string resultNumber = Converter.Convert(number, numberBase, targetNumberBase);
+				Console.WriteLine(
+					$"Converted number {number} from base {numberBase} to base {targetNumberBase} is {resultNumber}");
 			}
 		}
 	}

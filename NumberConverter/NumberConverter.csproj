@@ -7,7 +7,7 @@
     <ProjectGuid>{D55B4195-6313-4CDB-8B92-EECAD385D6E7}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>NumberConvertor</RootNamespace>
-    <AssemblyName>NumberConvertor</AssemblyName>
+    <AssemblyName>NumberConverter</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Convertor.cs" />
+    <Compile Include="Services\Converter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

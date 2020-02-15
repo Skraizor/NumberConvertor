@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NumberConvertor.Services
 {
-	public class Convertor
+	public class Converter
 	{
 		/// <summary>
 		/// Converts number from numberBase to targetNumberBase via decimal base
@@ -58,17 +54,11 @@ namespace NumberConvertor.Services
 		private static string ConvertFromDecimal(string decimalNumber, int targetNumberBase) {
 			// number / base = result - modulo
 			int result = int.Parse(decimalNumber);
-			int wholeRest;
 			string converted = "";
 			do {
-				wholeRest = result % targetNumberBase;
-				result = result / targetNumberBase;
-				if (wholeRest > 9) {
-					converted = string.Concat(converted, (char)(wholeRest + 55));
-				}
-				else {
-					converted = string.Concat(converted, wholeRest.ToString());
-				}
+				int wholeRest = result % targetNumberBase;
+				result /= targetNumberBase;
+				converted = wholeRest > 9 ? string.Concat(converted, (char)(wholeRest + 55)) : string.Concat(converted, wholeRest.ToString());
 			} while (result != 0);
 			char[] res = converted.ToCharArray();
 			Array.Reverse(res);
@@ -84,21 +74,23 @@ namespace NumberConvertor.Services
 		public static bool IsNumberValid(string number, int numberBase) {
 			// If base is below or equal to 10, then all 
 			// digits should be from 0 to 9. 
-			else if (numberBase <= 10) {
-				for (int i = 0; i < number.Length; i++)
-					if (!(number[i] >= '0' &&
-						 number[i] < ('0' + numberBase))) 
-            return false;
+			if (numberBase <= 10)
+			{
+				foreach (char n in number)
+					if (!(n >= '0' &&
+					      n < ('0' + numberBase))) 
+						return false;
 			}
 
 			// If base is below or equal to 16, then all 
 			// digits should be from 0 to 9 or from 'A'  
-			else {
-				for (int i = 0; i < number.Length; i++)
-					if (!((number[i] >= '0' &&
-							number[i] < ('0' + numberBase)) ||
-							(number[i] >= 'A' &&
-							 number[i] < ('A' + numberBase - 10))
+			else
+			{
+				foreach (char n in number)
+					if (!((n >= '0' &&
+					       n < ('0' + numberBase)) ||
+					      (n >= 'A' &&
+					       n < ('A' + numberBase - 10))
 						))
 						return false;
 			}
