@@ -3,8 +3,15 @@ using NumberConvertor.Services;
 
 namespace NumberConvertor
 {
+	/// <summary>
+	/// Contains the Main method of the program.
+	/// </summary>
 	class Program
 	{
+		/// <summary>
+		/// The main method of program
+		/// </summary>
+		/// <param name="args"></param>
 		private static void Main(string[] args) {
 			while (true) {
 				Console.Write("Enter number: ");

@@ -2,15 +2,20 @@
 
 namespace NumberConvertor.Services
 {
+	/// <summary>
+	/// Obsahuje funkce nutné pro převod čísel v číselných soustavách
+	/// </summary>
 	public class Converter
 	{
 		/// <summary>
-		/// Converts number from numberBase to targetNumberBase via decimal base
+		/// Převádí čísla ze soustavy numberBase do soustavy targetNumberBase a to přes desítkovou soustavu
 		/// </summary>
-		/// <param name="number"></param>
-		/// <param name="numberBase"></param>
-		/// <param name="targetNumberBase"></param>
-		/// <returns></returns>
+		/// <param name="number">Číslo, které chceme převést</param>
+		/// <param name="numberBase">Číselná soustava čísla, které chceme převést</param>
+		/// <param name="targetNumberBase">Číselná soustava, do které chceme dané číslo převést</param>
+		/// <returns>
+		/// Převedené číslo z "numberBase" do "targetNumberBase"
+		/// </returns>
 		public static string Convert(string number, int numberBase, int targetNumberBase) {
 			if (numberBase == targetNumberBase)
 				return number;
@@ -25,11 +30,13 @@ namespace NumberConvertor.Services
 		}
 
 		/// <summary>
-		/// Converts number from any base to decimal
+		/// Převádí číslo z jakékoliv báze do desítkové
 		/// </summary>
-		/// <param name="number"></param>
-		/// <param name="numberBase"></param>
-		/// <returns></returns>
+		/// <param name="number">Číslo v jakékoliv soustavě</param>
+		/// <param name="numberBase">Číselná soustava dané čísla</param>
+		/// <returns>
+		/// Číslo v desítkové soustavě
+		/// </returns>
 		private static string ConvertToDecimal(string number, int numberBase) {
 			// check if number is negative
 			// check if number is whole number
@@ -46,13 +53,14 @@ namespace NumberConvertor.Services
 		}
 
 		/// <summary>
-		/// Converts number from decimal to any base
+		/// Převádí číslo z desítkové soustavy do jakékoliv jiné
 		/// </summary>
-		/// <param name="decimalNumber"></param>
-		/// <param name="targetNumberBase"></param>
-		/// <returns></returns>
+		/// <param name="decimalNumber">Číslo v desítkové soustavě</param>
+		/// <param name="targetNumberBase">Číselná soustava, do které chceme číslo převést</param>
+		/// <returns>
+		/// Číslo převedené z desítkové soustavy do "targetNumberBase"
+		/// </returns>
 		private static string ConvertFromDecimal(string decimalNumber, int targetNumberBase) {
-			// number / base = result - modulo
 			int result = int.Parse(decimalNumber);
 			string converted = "";
 			do {
@@ -66,11 +74,13 @@ namespace NumberConvertor.Services
 		}
 
 		/// <summary>
-		/// Checks if number is in given base
+		/// Kontroluje, zda je zadané číslo z dané soustavy. Pokud není, nekončí chybou, ale program pokračuje dál.
 		/// </summary>
-		/// <param name="number"></param>
-		/// <param name="numberBase"></param>
-		/// <returns></returns>
+		/// <param name="number">Číslo, které chceme ověřit.</param>
+		/// <param name="numberBase">Číselná báze, proti které ověřujeme dané číslo.</param>
+		/// <returns>
+		/// Informaci, zda dané číslo patří do dané soustavy.
+		/// </returns>
 		public static bool IsNumberValid(string number, int numberBase) {
 			// If base is below or equal to 10, then all 
 			// digits should be from 0 to 9. 
